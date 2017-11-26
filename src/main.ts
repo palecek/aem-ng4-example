@@ -18,7 +18,15 @@ Wg.Widgets.AemNg4Example = function () {
 Wg.Widgets.AemNg4Example.prototype = new Wg.Widget();
 
 Wg.Widgets.AemNg4Example.prototype.init = function () {
+  var self = this
   platformBrowserDynamic().bootstrapModule(AppModule)
+    .then(() => {
+      if (self._element) {
+        // Hide AEM Application loader element
+        self._element.getElementsByClassName('external-widget-loader-loading')[0].style.display = 'none'
+        self._element.style.minHeight = '0px'
+      }
+    })
     .catch(err => console.log(err));
 };
 
