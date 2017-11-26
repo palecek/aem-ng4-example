@@ -14,10 +14,19 @@ const distFilesToRemove = [
   './dist/favicon.ico',
   './dist/index.html'
 ];
+const inletDistNecessaryFiles = [
+  'inlet.html',
+  'icon.png',
+  'inlet_definition.json',
+  'preview.html',
+  'widget.json'
+];
 
 concat(bundleFiles, './dist/inlet.js', function (err) {
   if (err) throw err;
   console.log('concat files to inlet file done');
   distFilesToRemove.map(fs.unlinkSync);
-  fs.copyFileSync('./src/inlet.html', './dist/inlet.html');
+  inletDistNecessaryFiles.map(file => {
+    fs.copyFileSync(`./src/${file}`, `./dist/${file}`);
+  });
 });
