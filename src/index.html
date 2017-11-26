@@ -9,6 +9,18 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <script>
+    // naive Wg implementation
+    var exports = {}
+    var Wg = {
+      Widgets: {},
+      Widget: function () {}
+    };
+    setTimeout(function() {
+      var inlet = new Wg.Widgets.AemNg4Example()
+      inlet.init()
+    }, 1000);
+  </script>
   <app-root></app-root>
 </body>
 </html>
