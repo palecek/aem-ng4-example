@@ -27,6 +27,6 @@ concat(bundleFiles, './dist/inlet.js', function (err) {
   console.log('concat files to inlet file done');
   distFilesToRemove.map(fs.unlinkSync);
   inletDistNecessaryFiles.map(file => {
-    fs.copyFileSync(`./src/${file}`, `./dist/${file}`);
+    fs.createReadStream(`./src/${file}`).pipe(fs.createWriteStream(`./dist/${file}`));
   });
 });
